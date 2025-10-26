@@ -50,3 +50,12 @@ For issues, [open an issue](https://github.com/rkneela0912/branch-cleanup-bot/is
 ## 💡 🧹 Keep repos clean
 
 Make your workflow more efficient with automation!
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to:
+- 🐛 Report bugs
+- 💡 Suggest features
+- 🔧 Submit pull requests
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
