@@ -1,12 +1,42 @@
-name: 'branch cleanup bot'
-description: '🧹 Automatically delete merged branches'
+name: 'Branch Cleanup Bot'
+description: '🧹 Automatically delete merged branches and clean up stale branches'
 author: 'rkneela0912'
+
 inputs:
   github_token:
+    description: 'GitHub token for API access'
     required: true
+  
+  protected_branches:
+    description: 'Comma-separated list of branches to protect from deletion (supports wildcards like release/*)'
+    required: false
+    default: 'main,master,develop,development,staging,production'
+  
+  delete_on_merge:
+    description: 'Delete branches automatically when PRs are merged'
+    required: false
+    default: 'true'
+  
+  delete_stale:
+    description: 'Delete stale branches (only works with workflow_dispatch or schedule events)'
+    required: false
+    default: 'false'
+  
+  stale_days:
+    description: 'Number of days before a branch is considered stale'
+    required: false
+    default: '90'
+  
+  dry_run:
+    description: 'Run in dry-run mode (log actions without deleting branches)'
+    required: false
+    default: 'false'
+
 runs:
   using: 'node20'
   main: 'dist/index.js'
+
 branding:
-  icon: 'check'
+  icon: 'trash-2'
   color: 'blue'
+

@@ -1,0 +1,25 @@
+name: Clean Stale Branches
+
+on:
+  schedule:
+    # Run every Sunday at midnight UTC
+    - cron: '0 0 * * 0'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Clean up stale branches
+        uses: rkneela0912/branch-cleanup-bot@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          protected_branches: 'main,master,develop,staging,production,release/*,hotfix/*'
+          delete_stale: true
+          stale_days: 90
+

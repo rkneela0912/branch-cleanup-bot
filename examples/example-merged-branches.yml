@@ -1,0 +1,20 @@
+name: Delete Merged Branches
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Clean up merged branches
+        uses: rkneela0912/branch-cleanup-bot@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          protected_branches: 'main,master,develop,release/*'
+          delete_on_merge: true
+
